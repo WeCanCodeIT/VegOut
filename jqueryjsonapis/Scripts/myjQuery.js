@@ -1,32 +1,45 @@
-﻿$(function () {
-    $('#viewAllButton').on('click', function () {
-        var $listItems = $("li");
-        $listItems.css("display", "block");
-    }
-    )
-})
-
+// When the doc is ready, the functions in the
+// body will run.
 $(function () {
     $('#findButton').on('click', function () {
-        //get search term from input box
-        var $searchTerm = $("#veggieInput").val();
+        var searchTerm = $('#veggieInput').val().toLowerCase();
+        var listItems = $("li"); //ALL recipes in the list
+        var count = listItems.length; //Count how many recipes there are
 
+       
+ 
 
-        ////variable for all list items (recipes)
-        var $listItems = $("li");
-
-        $listItems.each(function () {
-            if ($(this).text().includes($searchTerm)) {
-                $(this).css("display", "block");
+        listItems.each(function () {
+            if (!$(this).text().toLowerCase().includes(searchTerm)) {
+                $(this).fadeOut();
+                count -= 1; //If a match isn't found, count subtracts 1
             }
-            else {
-                $(this).css("display", "none");
+            
+            if (count == 0) {
+                $('#addItemForm').show(); 
             }
+            
 
+        });
 
-        })
+    });
 
-    })
+    $('#viewAllButton').on('click', function () {
+        var listItems = $('li');
+       listItems.show();
+        $('#addItemForm').hide();
+    });
 
-})
+    //add a new recipe to the list
+    $('#addRecipeButton').on('click', function () {
+        alert("Recipe Added!");
+        //get input from user
+        var newRecipe = $('#recipeInput').val();
+        $('ul').append('<li class="list-group-item">' + newRecipe + '</li>');
+        var listItems = $('li');
+        listItems.show();
+        $('#addItemForm').hide();
 
+    });
+
+});
