@@ -1,4 +1,4 @@
-﻿body {
+body {
     text-align:center;
     background-image:url("../images/veggiesdark.png");
     background-size:cover;
@@ -6,6 +6,14 @@
     
 }
 
+#addItemForm {
+    display:none;
+    margin-top:40px;
+}
+
+#addItemForm input {
+    margin-top:25px;
+}
 h1 {
     margin-top:0px;
     font-family: 'Pacifico', cursive;
@@ -68,6 +76,13 @@ input {
     background-color: #48c869;
     border-color:white;
 }
+
+#addRecipeButton {
+    width:20%;
+    background-color:#48c869;
+    border-color:white;
+}
+
 #buttons {
     margin-bottom: 80px;
 }
